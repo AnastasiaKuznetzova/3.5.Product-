@@ -6,9 +6,9 @@ public class Smartphone extends Product {
     private String manufacturer;
 
 
- public Smartphone(){
-     super();
- }
+    public Smartphone() {
+        super();
+    }
 
 
     public Smartphone(String manufacturer) {

@@ -39,10 +39,17 @@ class ProductManagerTest {
     @Test
     void shouldSearchByBookAuthor() {
         Product[] expected = {new Book(2,"Second", 350, "BB")};
-        Product[] actual = manager.searchBy("BB");
+        Product[] actual = manager.searchBy ("BB");
         assertArrayEquals(expected, actual);
     }
 
+    @Test
+    void shouldRemovieById() {
+        repository.removeById(4);
+        Product[] actual = repository.findAll();
+        Product[] expected = new Product[]{product1, product2, product3};
+        assertArrayEquals(expected, actual);
+    }
     @Test
     void shouldSearchBySmartphoneName() {
         Product[] expected = {new Smartphone(3,"Smart", 20000, "Sony")};
@@ -52,8 +59,19 @@ class ProductManagerTest {
 
     @Test
     void shouldSearchBySmartphoneManufacturer() {
+
         Product[] expected = {new Smartphone(4, "Phone", 50000, "Apple")};
         Product[] actual = manager.searchBy("Apple");
         assertArrayEquals(expected, actual);
     }
+
+
+    @Test
+    void shouldSearchNothing(){
+        Product[] expected = new Product[0];
+        Product[] actual = new Product[0];
+        assertArrayEquals(expected, actual);
+
+    }
+
 }
